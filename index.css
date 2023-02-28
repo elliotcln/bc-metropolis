@@ -1,0 +1,143 @@
+@font-face {
+  font-family: "Kanit";
+  src: url("./assets/fonts/kanit-bold.woff2") format("woff2"), url("./assets/fonts/kanit-bold.woff") format("woff");
+}
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
+  font-family: "Kanit", sans-serif;
+}
+
+.container {
+  padding-inline: 2rem;
+}
+
+header[role=banner] {
+  padding-block: 1rem;
+}
+header[role=banner] .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header[role=banner] .container > ul {
+  justify-content: flex-end;
+}
+header[role=banner] a:not(.brand) {
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+header[role=banner] a:not(.brand):hover, header[role=banner] a:not(.brand):focus {
+  text-decoration: underline;
+}
+header[role=banner] .brand {
+  flex-shrink: 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  line-height: 0.9;
+}
+header[role=banner] .brand span {
+  display: block;
+  font-size: 0.5em;
+}
+header[role=banner] nav,
+header[role=banner] ul {
+  flex: 1;
+}
+@media (max-width: 780px) {
+  header[role=banner] nav {
+    display: none;
+  }
+}
+header[role=banner] ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1rem;
+  color: white;
+  list-style-type: none;
+}
+header[role=banner] ul svg {
+  width: 1.5rem;
+}
+
+main[role=main] h1 {
+  margin-block: 1rem;
+  font-size: clamp(2rem, 8vw, 6.5rem);
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+  overflow: hidden;
+}
+main[role=main] h1 span {
+  position: relative;
+  overflow: hidden;
+}
+main[role=main] h1 span::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: black;
+  animation: slideUp 1s forwards;
+}
+main[role=main] h1 span:last-child {
+  display: block;
+  color: transparent;
+  -webkit-text-stroke: 3px white;
+}
+main[role=main] h1 span:last-child::after {
+  animation-delay: 0.2s;
+}
+main[role=main] .images-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+main[role=main] .images-grid a {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+main[role=main] .images-grid a:hover img {
+  transform: scale(1.1);
+}
+main[role=main] .images-grid a:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: black;
+  animation: slideUp 1s forwards;
+}
+main[role=main] .images-grid a:first-child::after {
+  animation-delay: 0.4s;
+}
+main[role=main] .images-grid a:nth-child(2)::after {
+  animation-delay: 0.6s;
+}
+main[role=main] .images-grid a:last-child::after {
+  animation-delay: 0.8s;
+}
+main[role=main] .images-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s;
+}
+
+@keyframes slideUp {
+  from {
+    bottom: 0;
+  }
+  to {
+    bottom: 100%;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */
