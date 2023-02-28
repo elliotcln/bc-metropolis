@@ -19,6 +19,7 @@
 
 header[role=banner] {
   padding-block: 1rem;
+  animation: slideDown 0.2s linear forwards;
 }
 header[role=banner] .container {
   display: flex;
@@ -86,7 +87,7 @@ main[role=main] h1 span::after {
   position: absolute;
   inset: 0;
   background: black;
-  animation: slideUp 1s forwards;
+  animation: slideUp 1s 0.2s forwards;
 }
 main[role=main] h1 span:last-child {
   display: block;
@@ -94,7 +95,7 @@ main[role=main] h1 span:last-child {
   -webkit-text-stroke: 3px white;
 }
 main[role=main] h1 span:last-child::after {
-  animation-delay: 0.2s;
+  animation-delay: 0.4s;
 }
 main[role=main] .images-grid {
   display: grid;
@@ -137,6 +138,14 @@ main[role=main] .images-grid img {
   }
   to {
     bottom: 100%;
+  }
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
   }
 }
 

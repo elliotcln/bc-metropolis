@@ -22,6 +22,7 @@
 // header
 header[role="banner"] {
   padding-block: 1rem;
+  animation: slideDown 0.2s linear forwards;
 
   .container {
     display: flex;
@@ -102,7 +103,7 @@ main[role="main"] {
         position: absolute;
         inset: 0;
         background: black;
-        animation: slideUp 1s forwards;
+        animation: slideUp 1s 0.2s forwards;
       }
 
       &:last-child {
@@ -111,7 +112,7 @@ main[role="main"] {
         -webkit-text-stroke: 3px white;
 
         &::after {
-          animation-delay: 0.2s;
+          animation-delay: 0.4s;
         }
       }
     }
@@ -166,5 +167,14 @@ main[role="main"] {
   }
   to {
     bottom: 100%;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
   }
 }
