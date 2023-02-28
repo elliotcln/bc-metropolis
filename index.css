@@ -19,7 +19,6 @@
 
 header[role=banner] {
   padding-block: 1rem;
-  animation: slideDown 0.2s linear forwards;
 }
 header[role=banner] .container {
   display: flex;
@@ -38,12 +37,21 @@ header[role=banner] a:not(.brand):hover, header[role=banner] a:not(.brand):focus
   text-decoration: underline;
 }
 header[role=banner] .brand {
+  position: relative;
   flex-shrink: 0;
   font-size: clamp(2rem, 5vw, 3rem);
   text-align: center;
   color: white;
   text-decoration: none;
   line-height: 0.9;
+  animation: slideUpLogo 0.5s linear forwards;
+}
+header[role=banner] .brand::after {
+  content: "";
+  position: absolute;
+  inset: -100%;
+  background: black;
+  animation: slideUpImages 1s 0.8s forwards;
 }
 header[role=banner] .brand span {
   display: block;
@@ -66,6 +74,26 @@ header[role=banner] ul {
   color: white;
   list-style-type: none;
 }
+header[role=banner] ul li:nth-child(1) a {
+  opacity: 0;
+  display: block;
+  animation: slideDown 0.5s 0.1s linear forwards;
+}
+header[role=banner] ul li:nth-child(2) a {
+  opacity: 0;
+  display: block;
+  animation: slideDown 0.5s 0.2s linear forwards;
+}
+header[role=banner] ul li:nth-child(3) a {
+  opacity: 0;
+  display: block;
+  animation: slideDown 0.5s 0.3s linear forwards;
+}
+header[role=banner] ul li:nth-child(4) a {
+  opacity: 0;
+  display: block;
+  animation: slideDown 0.5s 0.4s linear forwards;
+}
 header[role=banner] ul svg {
   width: 1.5rem;
 }
@@ -85,9 +113,9 @@ main[role=main] h1 span {
 main[role=main] h1 span::after {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -100%;
   background: black;
-  animation: slideUp 1s 0.2s forwards;
+  animation: slideUp 1s 1.2s forwards;
 }
 main[role=main] h1 span:last-child {
   display: block;
@@ -95,10 +123,11 @@ main[role=main] h1 span:last-child {
   -webkit-text-stroke: 3px white;
 }
 main[role=main] h1 span:last-child::after {
-  animation-delay: 0.4s;
+  animation-delay: 1.4s;
 }
 main[role=main] .images-grid {
   display: grid;
+  gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
 }
 main[role=main] .images-grid a {
@@ -112,18 +141,18 @@ main[role=main] .images-grid a:hover img {
 main[role=main] .images-grid a:after {
   content: "";
   position: absolute;
-  inset: 0;
+  inset: -5%;
   background: black;
-  animation: slideUp 1s forwards;
+  animation: slideUpImages 1s forwards;
 }
 main[role=main] .images-grid a:first-child::after {
-  animation-delay: 0.4s;
+  animation-delay: 1.4s;
 }
 main[role=main] .images-grid a:nth-child(2)::after {
-  animation-delay: 0.6s;
+  animation-delay: 1.6s;
 }
 main[role=main] .images-grid a:last-child::after {
-  animation-delay: 0.8s;
+  animation-delay: 1.8s;
 }
 main[role=main] .images-grid img {
   width: 100%;
@@ -135,16 +164,30 @@ main[role=main] .images-grid img {
 @keyframes slideUp {
   from {
     bottom: 0;
+    transform: skewY(5deg);
   }
   to {
     bottom: 100%;
+    transform: skewY(0deg);
+  }
+}
+@keyframes slideUpImages {
+  from {
+    bottom: 0;
+    transform: skewY(-5deg);
+  }
+  to {
+    bottom: 100%;
+    transform: skewY(0deg);
   }
 }
 @keyframes slideDown {
   from {
+    opacity: 0;
     transform: translateY(-100%);
   }
   to {
+    opacity: 1;
     transform: translateY(0);
   }
 }
